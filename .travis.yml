@@ -20,4 +20,4 @@ script:
 
 after_success:
   - npm run test
-  - bash <(curl -s https://codecov.io/bash)
+  # - bash <(curl -s https://codecov.io/bash)
