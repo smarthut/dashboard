@@ -6,9 +6,6 @@ cache:
   directories:
     - "node_modules"
 
-before_install:
-  - make vendor
-
 install:
   - npm install
 
