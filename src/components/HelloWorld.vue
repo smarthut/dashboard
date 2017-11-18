@@ -26,7 +26,7 @@
               <div class="card-content">
                 <div class="columns is-mobile is-vcentered">
                   <div class="column is-2 has-text-centered">
-                    {{ socket.value }}
+                    {{ socket.value }}<span v-if="socket.type === 'temperature'">&#8451;</span>
                   </div>
                   <div class="column">
                     <h4 class="title is-5">{{ socket.location }}@{{ idx }}</h4>
