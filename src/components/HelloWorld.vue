@@ -57,8 +57,8 @@
                     <h4 class="subtitle is-6">{{ socket.type }}</h4>
                   </div>
                   <div class="column is-4 has-text-right">
-                    <button class="button" v-if="socket.value === 0" v-on:click="onSubmit(idx, 1)">Enable {{ idx }}</button>
-                    <button class="button" v-else v-on:click="onSubmit(idx, 0)">Disable {{ idx }}</button>
+                    <button class="button" v-if="socket.value === 0" v-on:click="onSubmit(idx, 1)">Enable</button>
+                    <button class="button" v-else v-on:click="onSubmit(idx, 0)">Disable</button>
                   </div>
                 </div>
               </div>
@@ -88,7 +88,6 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      host: 'https://smarthut.cc',
       sensors: {},
       relays: {},
     };
@@ -100,7 +99,7 @@ export default {
   methods: {
     loadSensors() {
       // axios.defaults.headers.common['Authorization'] = 'Bearer '+response.data.token;
-      this.$http.get(`${this.host}/api/v2/device/megad328`)
+      this.$http.get('/api/v2/device/megad328')
       .then((resp) => {
         this.sensors = resp.data;
       })
@@ -109,7 +108,7 @@ export default {
       });
     },
     loadRelay() {
-      this.$http.get(`${this.host}/api/v2/device/laurent112`)
+      this.$http.get('/api/v2/device/laurent112')
       .then((resp) => {
         this.relays = resp.data;
       })
@@ -118,7 +117,7 @@ export default {
       });
     },
     onSubmit(id, status) {
-      this.$http.post(`${this.host}/api/v2/device/laurent112/socket/${id}`, {
+      this.$http.post(`/api/v2/device/laurent112/socket/${id}`, {
         num: status,
       })
       .then(resp => alert(`Success ${resp.data}`))
