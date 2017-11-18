@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/smarthut/dashboard.svg?branch=master)](https://travis-ci.org/smarthut/dashboard)
 
-
 > Web interface for the SmartHut
 
 ## Build Setup

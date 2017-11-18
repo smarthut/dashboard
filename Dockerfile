@@ -6,7 +6,7 @@ RUN npm run build
 
 FROM alpine:3.6
 RUN apk add --no-cache curl bash \
-  && curl -fsSL https://getcaddy.com | bash
+  && curl -fsSL https://getcaddy.com | bash -s personal
 COPY --from=builder /app/dist /www
 COPY Caddyfile /etc/Caddyfile
 EXPOSE 80 443 2015
