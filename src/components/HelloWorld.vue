@@ -118,7 +118,7 @@ export default {
       });
     },
     onSubmit(id, status) {
-      this.$http.post(`${this.host}/api/v2/device/laurent112/${id}`, {
+      this.$http.post(`${this.host}/api/v2/device/laurent112/socket/${id}`, {
         num: status,
       })
       .then(resp => alert(`Success ${resp.data}`))
