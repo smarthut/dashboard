@@ -117,7 +117,7 @@ export default {
       });
     },
     onSubmit(id, status) {
-      const req = `value=${status}` // TODO: add QueryString here
+      const req = `value=${status}`; // TODO: add QueryString here
       this.$http.post(`/api/v2/device/laurent112/socket/${id}`, req)
       .then(resp => alert(`Success ${resp.data}`))
       .catch((err) => {
