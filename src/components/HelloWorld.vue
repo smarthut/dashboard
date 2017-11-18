@@ -95,7 +95,7 @@ export default {
       // relays: {"host":"http://laurent112:8080","updated_at":"2017-11-17T22:30:47.2918105Z","sockets":[{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"}]},
     };
   },
-  mounted() {
+  created() {
     this.loadSensors();
     this.loadRelay();
   },
