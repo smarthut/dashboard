@@ -91,8 +91,6 @@ export default {
       host: 'https://smarthut.cc',
       sensors: {},
       relays: {},
-      // sensors: {"host":"http://megad328:8080","updated_at":"2017-11-17T22:27:12.438639898Z","sockets":[{"value":"ON/4","type":"disabled","location":"none"},{"value":3.37,"type":"temperature","location":"Bathroom (1st floor)"},{"value":2.93,"type":"temperature","location":"Bedroom (1st floor)"},{"value":3,"type":"temperature","location":"Living Room (North)"},{"value":3.18,"type":"temperature","location":"Living Room (South)"},{"value":3.5,"type":"temperature","location":"Steamshop"},{"value":3.75,"type":"temperature","location":"Bathroom (2nd floor)"},{"value":4,"type":"temperature","location":"East Bedroom (2nd floor)"},{"value":4.81,"type":"temperature","location":"Server Room"},{"value":3.5,"type":"temperature","location":"West Bedroom 2"},{"value":3.56,"type":"temperature","location":"Street"},{"value":"NA","type":"disabled","location":"none"},{"value":"NA","type":"disabled","location":"none"},{"value":"OFF/0","type":"disabled","location":"none"}]},
-      // relays: {"host":"http://laurent112:8080","updated_at":"2017-11-17T22:30:47.2918105Z","sockets":[{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"},{"value":0,"type":"relay","location":"none"}]},
     };
   },
   created() {
@@ -113,7 +111,7 @@ export default {
     loadRelay() {
       this.$http.get(`${this.host}/api/v2/device/laurent112`)
       .then((resp) => {
-        this.sensors = resp.data;
+        this.relays = resp.data;
       })
       .catch((err) => {
         this.errors.push(err);
