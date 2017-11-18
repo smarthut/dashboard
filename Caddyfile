@@ -1,0 +1,6 @@
+{$CADDY_HOST}
+root /www
+
+gzip
+
+log stdout
