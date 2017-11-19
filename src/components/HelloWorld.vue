@@ -99,7 +99,7 @@ export default {
   methods: {
     loadSensors() {
       // axios.defaults.headers.common['Authorization'] = 'Bearer '+response.data.token;
-      this.$http.get('/api/v2/device/megad328')
+      this.$http.get('/api/v1/device/megad328')
       .then((resp) => {
         this.sensors = resp.data;
       })
@@ -108,7 +108,7 @@ export default {
       });
     },
     loadRelay() {
-      this.$http.get('/api/v2/device/laurent112')
+      this.$http.get('/api/v1/device/laurent112')
       .then((resp) => {
         this.relays = resp.data;
       })
@@ -118,7 +118,7 @@ export default {
     },
     onSubmit(id, status) {
       const req = `value=${status}`; // TODO: add QueryString here
-      this.$http.post(`/api/v2/device/laurent112/socket/${id}`, req)
+      this.$http.post(`/api/v1/device/laurent112/socket/${id}`, req)
       .then(resp => alert(`Success ${resp.data}`))
       .catch((err) => {
         this.errors.push(err);
