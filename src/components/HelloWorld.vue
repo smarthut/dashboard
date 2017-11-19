@@ -86,52 +86,52 @@
 <script>
 export default {
   name: 'HelloWorld',
-  data() {
+  data () {
     return {
       sensors: {},
-      relays: {},
-    };
+      relays: {}
+    }
   },
-  created() {
-    this.loadSensors();
-    this.loadRelay();
+  created () {
+    this.loadSensors()
+    this.loadRelay()
   },
   methods: {
-    loadSensors() {
+    loadSensors () {
       // axios.defaults.headers.common['Authorization'] = 'Bearer '+response.data.token;
       this.$http.get('/api/v1/device/megad328')
       .then((resp) => {
-        this.sensors = resp.data;
+        this.sensors = resp.data
       })
       .catch((e) => {
-        this.errors.push(e);
-      });
+        this.errors.push(e)
+      })
     },
-    loadRelay() {
+    loadRelay () {
       this.$http.get('/api/v1/device/laurent112')
       .then((resp) => {
-        this.relays = resp.data;
+        this.relays = resp.data
       })
       .catch((err) => {
-        this.errors.push(err);
-      });
+        this.errors.push(err)
+      })
     },
-    onSubmit(id, status) {
-      const req = `value=${status}`; // TODO: add QueryString here
+    onSubmit (id, status) {
+      const req = `value=${status}` // TODO: add QueryString here
       this.$http.post(`/api/v1/device/laurent112/socket/${id}`, req)
       .then(resp => alert(`Success ${resp.data}`))
       .catch((err) => {
-        this.errors.push(err);
-      });
+        this.errors.push(err)
+      })
 
-      this.loadRelay();
-    },
-  },
+      this.loadRelay()
+    }
+  }
   // filters: {
   //   formatTime(value) {
   //     const fmt = this.moment(String(value)).format('YYYY MMM DD HH:mm:ss');
   //     return fmt;
   //   },
   // },
-};
+}
 </script>
