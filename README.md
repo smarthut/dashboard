@@ -1,8 +1,7 @@
 # SmartHut Dashboard
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/smarthut/dashboard.svg)](https://greenkeeper.io/)
-
 [![Build Status](https://travis-ci.org/smarthut/dashboard.svg?branch=master)](https://travis-ci.org/smarthut/dashboard)
+[![Greenkeeper badge](https://badges.greenkeeper.io/smarthut/dashboard.svg)](https://greenkeeper.io/)
 [![Docker Build Status](https://img.shields.io/docker/build/smarthut/dashboard.svg)](https://hub.docker.com/r/smarthut/dashboard/)
 [![Docker Layers](https://images.microbadger.com/badges/image/smarthut/dashboard.svg)](https://microbadger.com/images/smarthut/dashboard)
 
