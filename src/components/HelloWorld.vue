@@ -101,29 +101,29 @@ export default {
     loadSensors () {
       // axios.defaults.headers.common['Authorization'] = 'Bearer '+response.data.token;
       this.$http.get(`${this.host}/api/v1/device/megad328`)
-      .then((resp) => {
-        this.sensors = resp.data
-      })
-      .catch((e) => {
-        this.errors.push(e)
-      })
+        .then((resp) => {
+          this.sensors = resp.data
+        })
+        .catch((e) => {
+          this.errors.push(e)
+        })
     },
     loadRelay () {
       this.$http.get('/api/v1/device/laurent112')
-      .then((resp) => {
-        this.relays = resp.data
-      })
-      .catch((err) => {
-        this.errors.push(err)
-      })
+        .then((resp) => {
+          this.relays = resp.data
+        })
+        .catch((err) => {
+          this.errors.push(err)
+        })
     },
     onSubmit (id, status) {
       const req = `value=${status}` // TODO: add QueryString here
       this.$http.post(`/api/v1/device/laurent112/socket/${id}`, req)
-      .then(resp => alert(`Success ${resp.data}`))
-      .catch((err) => {
-        this.errors.push(err)
-      })
+        .then(resp => alert(`Success ${resp.data}`))
+        .catch((err) => {
+          this.errors.push(err)
+        })
 
       this.loadRelay()
     }
