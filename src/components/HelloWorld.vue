@@ -88,6 +88,7 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
+      host: 'https://smarthut.cc',
       sensors: {},
       relays: {}
     }
@@ -99,7 +100,7 @@ export default {
   methods: {
     loadSensors () {
       // axios.defaults.headers.common['Authorization'] = 'Bearer '+response.data.token;
-      this.$http.get('/api/v1/device/megad328')
+      this.$http.get(`${this.host}/api/v1/device/megad328`)
       .then((resp) => {
         this.sensors = resp.data
       })

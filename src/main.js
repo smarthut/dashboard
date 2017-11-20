@@ -7,6 +7,7 @@ import axios from 'axios'
 import App from './App'
 import router from './router'
 
+// axios.defaults.baseURL = 'https://smarthut.cc'
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
 Vue.prototype.$http = axios
