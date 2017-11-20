@@ -19,7 +19,7 @@
     <section class="section is-small">
       <div class="container">
         <h2 class="title is-2">Sensors</h2>
-        <h4 class="subtitle is-4">{{ sensors.updated_at }}</h4>
+        <h4 class="subtitle is-4">{{ sensors.updated_at | moment("YYYY MMM DD HH:mm:ss") }}</h4>
         <div class="columns is-multiline">
           <div class="column is-half is-one-third-desctop" v-for="(socket, idx) in sensors.sockets">
             <div class="card">
@@ -42,7 +42,7 @@
     <section class="section is-small">
       <div class="container">
         <h2 class="title is-2">Switch</h2>
-        <h4 class="subtitle is-4">{{ relays.updated_at }}</h4>
+        <h4 class="subtitle is-4">{{ relays.updated_at | moment("YYYY MMM DD HH:mm:ss") }}</h4>
         <div class="columns is-multiline">
           <div class="column is-half is-one-third-desktop" v-for="(socket, idx) in relays.sockets">
             <div class="card">
@@ -88,7 +88,6 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      host: 'https://smarthut.cc',
       sensors: {},
       relays: {}
     }
@@ -96,11 +95,16 @@ export default {
   created () {
     this.loadSensors()
     this.loadRelay()
+
+    setInterval(() => {
+      this.loadSensors()
+      this.loadRelay()
+    }, 100)
   },
   methods: {
     loadSensors () {
       // axios.defaults.headers.common['Authorization'] = 'Bearer '+response.data.token;
-      this.$http.get(`${this.host}/api/v1/device/megad328`)
+      this.$http.get('/api/v1/device/megad328')
         .then((resp) => {
           this.sensors = resp.data
         })
@@ -120,19 +124,11 @@ export default {
     onSubmit (id, status) {
       const req = `value=${status}` // TODO: add QueryString here
       this.$http.post(`/api/v1/device/laurent112/socket/${id}`, req)
-        .then(resp => alert(`Success ${resp.data}`))
+        .then(/* resp => alert(`Success ${resp.data}`) */)
         .catch((err) => {
           this.errors.push(err)
         })
-
-      this.loadRelay()
     }
   }
-  // filters: {
-  //   formatTime(value) {
-  //     const fmt = this.moment(String(value)).format('YYYY MMM DD HH:mm:ss');
-  //     return fmt;
-  //   },
-  // },
 }
 </script>

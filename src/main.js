@@ -2,7 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import axios from 'axios'
-// import moment from 'moment'
+import VueAxios from 'vue-axios'
+import VueMoment from 'vue-moment'
 
 import App from './App'
 import router from './router'
@@ -10,10 +11,10 @@ import router from './router'
 // axios.defaults.baseURL = 'https://smarthut.cc'
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
-Vue.prototype.$http = axios
-// Vue.prototype.moment = moment;
-
 Vue.config.productionTip = false
+
+Vue.use(VueAxios, axios)
+Vue.use(VueMoment)
 
 /* eslint-disable no-new */
 new Vue({
