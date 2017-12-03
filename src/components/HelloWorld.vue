@@ -1,5 +1,115 @@
 <template>
   <main>
+    <v-navigation-drawer fixed clipped app v-model="drawer">
+      <v-list dense>
+        <template v-for="(item, i) in items">
+          <v-layout row v-if="item.heading" align-center :key="i">
+            <v-flex xs6>
+              <v-subheader v-if="item.heading">
+                {{ item.heading }}
+              </v-subheader>
+            </v-flex>
+            <v-flex xs6 class="text-xs-center">
+              <a href="#!" class="body-2 black--text">EDIT</a>
+            </v-flex>
+          </v-layout>
+          <v-list-group v-else-if="item.children" v-model="item.model" no-action>
+            <v-list-tile slot="item" @click="">
+              <v-list-tile-action>
+                <v-icon>{{ item.model ? item.icon : item['icon-alt'] }}</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  {{ item.text }}
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile
+              v-for="(child, i) in item.children"
+              :key="i"
+              @click=""
+            >
+              <v-list-tile-action v-if="child.icon">
+                <v-icon>{{ child.icon }}</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  {{ child.text }}
+                </v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list-group>
+          <v-list-tile v-else @click="">
+            <v-list-tile-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                {{ item.text }}
+              </v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </template>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar color="blue darken-3" dark app clipped-left fixed>
+      <v-toolbar-title :style="$vuetify.breakpoint.smAndUp ? 'width: 300px; min-width: 250px' : 'min-width: 72px'" class="ml-0 pl-3">
+        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+        <span class="hidden-xs-only">SmartHut Dashboard</span>
+      </v-toolbar-title>
+      <!-- <div class="d-flex align-center" style="margin-left: auto">
+        <v-btn icon>
+          <v-icon>apps</v-icon>
+        </v-btn>
+        <v-btn icon>
+          <v-icon>notifications</v-icon>
+        </v-btn>
+      </div> -->
+    </v-toolbar>
+    <v-content>
+      <v-container grid-list-md fluid>
+        <v-layout row wrap>
+          <v-flex xs6 v-for="(socket, idx) in sensors.sockets" :key="idx">
+            <v-card color="white" class="black--text">
+              <v-container fluid grid-list-lg>
+                <v-layout row align-center>
+                  <v-flex xs2>
+                    {{ socket.value }}<span v-if="socket.type === 'temperature'">&#8451;</span>
+                  </v-flex>
+                  <v-flex xs10>
+                    <div>
+                      <div class="headline">{{ socket.location }}@{{ idx }}</div>
+                      <div>{{ socket.type }}</div>
+                    </div>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card>
+          </v-flex>
+        </v-layout>
+        <v-layout row wrap>
+          <v-flex xs6 v-for="(socket, idx) in relays.sockets" :key="idx">
+            <v-card color="white" class="black--text">
+              <v-container fluid grid-list-lg>
+                <v-layout row align-center>
+                  <v-flex xs2>
+                    {{ socket.value }}<span v-if="socket.type === 'temperature'">&#8451;</span>
+                  </v-flex>
+                  <v-flex xs10>
+                    <div>
+                      <div class="headline">{{ socket.location }}@{{ idx }}</div>
+                      <div>{{ socket.type }}</div>
+                    </div>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
+  </main>
+  <!-- <main>
     <header class="hero is-medium is-info">
       <div class="hero-head">
         <div class="container">
@@ -21,7 +131,7 @@
         <h2 class="title is-2">Sensors</h2>
         <h4 class="subtitle is-4">{{ sensors.updated_at | moment("YYYY MMM DD HH:mm:ss") }}</h4>
         <div class="columns is-multiline">
-          <div class="column is-half is-one-third-desctop" v-for="(socket, idx) in sensors.sockets">
+          <div class="column is-half is-one-third-desktop" v-for="(socket, idx) in sensors.sockets">
             <div class="card">
               <div class="card-content">
                 <div class="columns is-mobile is-vcentered">
@@ -80,7 +190,7 @@
         </div>
       </div>
     </footer>
-  </main>
+  </main> -->
 </template>
 
 <script>
@@ -89,7 +199,12 @@ export default {
   data () {
     return {
       sensors: {},
-      relays: {}
+      relays: {},
+      dialog: false,
+      drawer: null,
+      items: [
+        { icon: 'memory', text: 'Devices' }
+      ]
     }
   },
   created () {
