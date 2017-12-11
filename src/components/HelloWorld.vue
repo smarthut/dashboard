@@ -21,7 +21,7 @@
         <h2 class="title is-2">Sensors</h2>
         <h4 class="subtitle is-4">{{ sensors.updated_at | moment("YYYY MMM DD HH:mm:ss") }}</h4>
         <div class="columns is-multiline">
-          <div class="column is-half is-one-third-desctop" v-for="(socket, idx) in sensors.sockets">
+          <div class="column is-half" v-for="(socket, idx) in sensors.sockets">
             <div class="card">
               <div class="card-content">
                 <div class="columns is-mobile is-vcentered">
@@ -44,7 +44,7 @@
         <h2 class="title is-2">Switch</h2>
         <h4 class="subtitle is-4">{{ relays.updated_at | moment("YYYY MMM DD HH:mm:ss") }}</h4>
         <div class="columns is-multiline">
-          <div class="column is-half is-one-third-desktop" v-for="(socket, idx) in relays.sockets">
+          <div class="column is-half" v-for="(socket, idx) in relays.sockets">
             <div class="card">
               <div class="card-content">
                 <div class="columns is-mobile is-vcentered">
@@ -89,7 +89,8 @@ export default {
   data () {
     return {
       sensors: {},
-      relays: {}
+      relays: {},
+      errors: []
     }
   },
   created () {
@@ -122,8 +123,11 @@ export default {
         })
     },
     onSubmit (id, status) {
-      const req = `value=${status}` // TODO: add QueryString here
-      this.$http.post(`/api/v1/device/laurent112/socket/${id}`, req)
+      // const req = `value=${status}` // TODO: add QueryString here
+      this.$http.post('/api/v1/device/laurent112/socket', {
+        'id': id,
+        'value': status
+      })
         .then(/* resp => alert(`Success ${resp.data}`) */)
         .catch((err) => {
           this.errors.push(err)
