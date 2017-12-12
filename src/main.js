@@ -10,7 +10,7 @@ import App from './App'
 import router from './router'
 
 axios.defaults.baseURL = 'https://smarthut.cc'
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+axios.defaults.headers.post['Content-Type'] = 'application/json'
 
 Vue.config.productionTip = false
 

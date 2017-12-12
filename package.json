@@ -16,10 +16,10 @@
     "vue-axios": "^2.0.2",
     "vue-moment": "^3.1.0",
     "vue-router": "^3.0.1",
-    "vuetify": "^0.17.3"
+    "vuetify": "^0.17.4"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.2",
+    "autoprefixer": "^7.2.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.0.3",
     "babel-loader": "^7.1.1",
@@ -30,7 +30,7 @@
     "chalk": "^2.0.1",
     "copy-webpack-plugin": "^4.2.3",
     "css-loader": "^0.28.0",
-    "eslint": "^4.12.1",
+    "eslint": "^4.13.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
@@ -57,9 +57,9 @@
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.9",
-    "webpack": "^3.9.1",
+    "webpack": "^3.10.0",
     "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.9.5",
+    "webpack-dev-server": "^2.9.7",
     "webpack-merge": "^4.1.0"
   },
   "engines": {
