@@ -1,5 +1,5 @@
 <template>
-  <v-app id="app">
+  <v-app>
     <router-view/>
   </v-app>
 </template>
@@ -10,6 +10,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="stylus">
+  @import '~vuetify/src/stylus/main.styl'
 </style>
