@@ -73,7 +73,7 @@
           <div class="level">
             <div class="level-left"></div>
             <div class="level-right">
-              <a class="level-item" href="https://smarthut.000webhostapp.com/">History</a>
+              <a class="level-item" href="http://smarthut.infinityfreeapp.com/">History</a>
               <a class="level-item" href="https://status.smarthut.cc">Status</a>
             </div>
           </div>
