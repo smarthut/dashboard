@@ -239,7 +239,7 @@ export default {
     onSubmit (id, status) {
       this.$http.post('/api/v1/device/laurent112/socket', {
         'id': id,
-        'value': status
+        'status': status
       })
         .then(/* resp => alert(`Success ${resp.data}`) */)
         .catch((err) => {
