@@ -4,7 +4,7 @@ COPY . .
 RUN npm install
 RUN npm run build
 
-FROM alpine:3.6
+FROM alpine:latest
 RUN apk add --no-cache curl bash \
   && curl -fsSL https://getcaddy.com | bash -s personal
 COPY --from=builder /app/dist /www

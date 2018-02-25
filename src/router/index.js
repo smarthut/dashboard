@@ -1,15 +1,15 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import VueRouter from 'vue-router'
+import Home from '@/components/Home'
+import Devices from '@/components/Device/Devices'
+import Device from '@/components/Device/Device'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
+export default new VueRouter({
   routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
+    { path: '/', name: 'Home', component: Home },
+    { path: '/devices', name: 'Devices', component: Devices },
+    { path: '/device/:deviceid', name: 'Device', component: Device, props: true }
   ]
 })
