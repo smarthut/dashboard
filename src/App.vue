@@ -55,7 +55,7 @@ export default {
       ],
       navItems: [
         { icon: 'mdi-chart-line', title: 'History', link: 'http://smarthut.infinityfreeapp.com/' },
-        { icon: 'mdi-power-socket-eu', title: 'Status', link: 'https://status.smarthut.cc/' }
+        { icon: 'mdi-checkbox-marked-circle-outline', title: 'Status', link: 'https://status.smarthut.cc/' }
       ]
     }
   }
