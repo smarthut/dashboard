@@ -53,7 +53,7 @@ export default {
         })
     },
     onSubmit (id, status) {
-      this.$http.post('/api/v1/device/laurent112/socket', {
+      this.$http.post(`/api/v1/device/${this.deviceid}/socket`, {
         'id': id,
         'status': status
       })
