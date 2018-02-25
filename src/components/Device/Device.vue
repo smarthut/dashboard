@@ -1,24 +1,28 @@
 <template>
   <v-container grid-list-md fluid>
-    <v-layout row wrap>
-      <v-flex xs12 md6 v-for="(socket, idx) in device.sockets" :key="idx">
-        <v-card color="white" class="black--text">
-          <v-container fluid grid-list-lg>
-            <v-layout row align-center>
-              <v-flex xs2 text-xs-center><span class="headline">{{ socket.value }}</span></v-flex>
-              <v-flex xs>
-                <div class="headline">{{ socket.location }}@{{ idx }}</div>
-                <div>{{ socket.type }}</div>
-              </v-flex>
-              <v-flex xs3 text-xs-center v-if="deviceid === 'laurent112'">
-                <v-btn flat color="success" v-if="socket.value === 0" v-on:click="onSubmit(idx, 1)">Enable</v-btn>
-                <v-btn flat color="error" v-if="socket.value === 1" v-on:click="onSubmit(idx, 0)">Disable</v-btn>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-card>
-      </v-flex>
-    </v-layout>
+    <v-data-table
+      :headers="headers"
+      :items="device.sockets"
+      class="elevation-3"
+      hide-actions
+    >
+      <template slot="items" slot-scope="props">
+        <td>{{ props.index }}</td>
+        <td class="text-xs-right">{{ props.item.value }}</td>
+        <td class="text-xs-right">{{ props.item.type }}</td>
+        <td class="text-xs-right">{{ props.item.location }}</td>
+        <td class="text-xs-right">
+          <v-switch v-if="props.item.type === 'relay'"
+            color="success"
+            v-model="props.item.value"
+            :false-value="0"
+            :true-value="1"
+            @change="onSubmit(props.index, props.item.value)"
+            hide-details
+          ></v-switch>
+        </td>
+      </template>
+    </v-data-table>
   </v-container>
 </template>
 
@@ -29,6 +33,13 @@ export default {
   data () {
     return {
       device: {},
+      headers: [
+        { text: 'ID', value: 'id', align: 'left', sortable: false },
+        { text: 'Value', value: 'value', align: 'left', sortable: false },
+        { text: 'Type', value: 'type', align: 'left', sortable: false },
+        { text: 'Location', value: 'location', align: 'left', sortable: false },
+        { text: 'Actions', value: 'value', sortable: false }
+      ],
       items: [
         { icon: 'memory', text: 'Devices' }
       ]
