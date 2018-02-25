@@ -11,8 +11,8 @@
                 <div>{{ socket.type }}</div>
               </v-flex>
               <v-flex xs3 text-xs-center v-if="deviceid === 'laurent112'">
-                <v-btn color="success" v-if="socket.value === 0" v-on:click="onSubmit(idx, 1)">Enable</v-btn>
-                <v-btn color="error" v-if="socket.value === 1" v-on:click="onSubmit(idx, 0)">Disable</v-btn>
+                <v-btn flat color="success" v-if="socket.value === 0" v-on:click="onSubmit(idx, 1)">Enable</v-btn>
+                <v-btn flat color="error" v-if="socket.value === 1" v-on:click="onSubmit(idx, 0)">Disable</v-btn>
               </v-flex>
             </v-layout>
           </v-container>
