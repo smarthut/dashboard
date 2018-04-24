@@ -10,6 +10,6 @@ export default new VueRouter({
   routes: [
     { path: '/', name: 'Home', component: Home },
     { path: '/devices', name: 'Devices', component: Devices },
-    { path: '/device/:deviceid', name: 'Device', component: Device, props: true }
+    { path: '/device/:deviceName', name: 'Device', component: Device, props: true }
   ]
 })

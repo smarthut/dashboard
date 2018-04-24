@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <p>Dashboard</p>
-    <p>This page is not implemented yet. Please, user the drawer menu.</p>
+    <p>This page is not implemented yet. Use the drawer menu.</p>
   </v-container>
 </template>
 

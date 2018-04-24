@@ -2,22 +2,22 @@
   <v-container grid-list-md fluid>
     <v-data-table
       :headers="headers"
-      :items="device.sockets"
+      :items="deviceInfo.sockets"
       class="elevation-3"
       hide-actions
     >
       <template slot="items" slot-scope="props">
         <td>{{ props.index }}</td>
-        <td class="text-xs-right">{{ props.item.value }}</td>
+        <td class="text-xs-right">{{ deviceSockets.sockets[props.index] }}</td>
         <td class="text-xs-right">{{ props.item.type }}</td>
-        <td class="text-xs-right">{{ props.item.location }}</td>
+        <td class="text-xs-right">{{ props.item.description }}</td>
         <td class="text-xs-right">
           <v-switch v-if="props.item.type === 'relay'"
             color="success"
-            v-model="props.item.value"
+            v-model="deviceSockets.sockets[props.index]"
             :false-value="0"
             :true-value="1"
-            @change="onSubmit(props.index, props.item.value)"
+            @change="onSubmit(props.index, deviceSockets.sockets[props.index])"
             hide-details
           ></v-switch>
         </td>
@@ -28,49 +28,66 @@
 
 <script>
 export default {
-  name: 'Home',
-  props: ['deviceid'],
+  name: 'Device',
+  props: ['deviceName'],
   data () {
     return {
-      device: {},
+      deviceInfo: {},
+      deviceSockets: {},
       headers: [
         { text: 'ID', value: 'id', align: 'left', sortable: false },
         { text: 'Value', value: 'value', align: 'left', sortable: false },
         { text: 'Type', value: 'type', align: 'left', sortable: false },
-        { text: 'Location', value: 'location', align: 'left', sortable: false },
+        { text: 'Description', value: 'description', align: 'left', sortable: false },
         { text: 'Actions', value: 'value', sortable: false }
       ],
       items: [
         { icon: 'memory', text: 'Devices' }
-      ]
+      ],
+      errors: []
     }
   },
   created () {
     this.loadDevice()
+    this.loadSockets()
 
     setInterval(() => {
-      this.loadDevice()
+      this.loadDevice() // TODO: replace `created` event to handle router views switch
+      this.loadSockets()
     }, 100)
   },
   methods: {
     loadDevice () {
-      // axios.defaults.headers.common['Authorization'] = 'Bearer '+response.data.token;
-      this.$http.get(`/api/v1/device/${this.deviceid}`)
-        .then((resp) => {
-          this.device = resp.data
+      this.$http.get(`/api/v1/device/${this.deviceName}`)
+        .then(resp => {
+          this.deviceInfo = resp.data
+          console.log(this.deviceInfo)
         })
-        .catch((e) => {
-          this.errors.push(e)
+        .catch(err => {
+          this.errors.push(err)
+          console.log(err)
         })
     },
-    onSubmit (id, status) {
-      this.$http.post(`/api/v1/device/${this.deviceid}/socket`, {
-        'id': id,
+    loadSockets () {
+      // axios.defaults.headers.common['Authorization'] = 'Bearer '+response.data.token;
+      this.$http.get(`/api/v1/device/${this.deviceName}/socket`)
+        .then((resp) => {
+          this.deviceSockets = resp.data
+        })
+        .catch((err) => {
+          // this.errors.push(err)
+          console.log(err)
+        })
+    },
+    onSubmit (socketId, status) {
+      this.$http.post(`/api/v1/device/${this.deviceName}/socket`, {
+        'id': socketId,
         'status': status
       })
         .then(/* resp => alert(`Success ${resp.data}`) */)
         .catch((err) => {
-          this.errors.push(err)
+          // this.errors.push(err)
+          console.log(err)
         })
     }
   }
