@@ -1,7 +1,16 @@
-### Vue ###
-/dist
+### Testing ###
+/coverage
 
-# Created by https://www.gitignore.io/api/git,node,code,linux,macos,windows,sublimetext
+### Production ###
+/build
+
+### misc ###
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Created by https://www.gitignore.io/api/git,node,code,macos,linux,windows,sublimetext
 
 ### Code ###
 # Visual Studio Code - https://code.visualstudio.com/
@@ -169,4 +178,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.gitignore.io/api/git,node,code,linux,macos,windows,sublimetext
+
+# End of https://www.gitignore.io/api/git,node,code,macos,linux,windows,sublimetext

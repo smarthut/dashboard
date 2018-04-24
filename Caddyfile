@@ -1,8 +1,5 @@
 {$CADDY_HOST}
 root /www
-
 gzip
-
 log stdout
-
 basicauth / {$CADDY_USER} {$CADDY_PASS}
