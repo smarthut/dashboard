@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'material-ui';
 import logo from './logo.svg';
 import './App.css';
 
@@ -13,9 +14,9 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <p className="App-intro">
-          Hello there!
-        </p>
+        <Button variant="raised" color="primary">
+          Hello World
+        </Button>
       </div>
     );
   }

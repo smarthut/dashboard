@@ -5,6 +5,7 @@
   "author": "Leonid Boykov <leonid.v.boykov@gmail.com>",
   "private": true,
   "dependencies": {
+    "@material-ui/icons": "^1.0.0-beta.43",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.4",
     "material-ui": "^1.0.0-beta.43",
