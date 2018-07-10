@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     fetchDevice () {
-      axios.get(`/api/v1/device/${this.deviceName}`)
+      this.axios.get(`/api/v1/device/${this.deviceName}`)
         .then(resp => {
           this.deviceInfo = resp.data
         })
@@ -68,7 +68,7 @@ export default {
     },
     fetchSockets () {
       // axios.defaults.headers.common['Authorization'] = 'Bearer '+response.data.token;
-      axios.get(`/api/v1/device/${this.deviceName}/socket`)
+      this.axios.get(`/api/v1/device/${this.deviceName}/socket`)
         .then((resp) => {
           this.deviceSockets = resp.data
         })
@@ -78,7 +78,7 @@ export default {
         })
     },
     onSubmit (socketId, status) {
-      axios.post(`/api/v1/device/${this.deviceName}/socket`, {
+      this.axios.post(`/api/v1/device/${this.deviceName}/socket`, {
         'id': socketId,
         'status': status
       })
