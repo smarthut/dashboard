@@ -15,8 +15,6 @@
           <v-switch v-if="props.item.type === 'relay'"
             color="success"
             v-model="deviceSockets.sockets[props.index]"
-            :false-value="0"
-            :true-value="1"
             @change="onSubmit(props.index, deviceSockets.sockets[props.index])"
             hide-details
           ></v-switch>
