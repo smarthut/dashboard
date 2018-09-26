@@ -50,8 +50,8 @@ export default {
     return {
       drawer: false,
       menuItems: [
-        { icon: 'mdi-thermometer', title: 'MegaD 328', link: '/device/megad328' },
-        { icon: 'mdi-power-socket-eu', title: 'Laurent 112', link: '/device/laurent112' }
+        { icon: 'mdi-thermometer', title: 'MegaD 328', link: '/devices/megad328' },
+        { icon: 'mdi-power-socket-eu', title: 'Laurent 112', link: '/devices/laurent112' }
       ],
       navItems: [
         { icon: 'mdi-chart-line', title: 'History', link: 'http://smarthut.infinityfreeapp.com/' },
